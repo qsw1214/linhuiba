@@ -1,0 +1,175 @@
+$bgc : #f0f0f0 ;        // 背景色
+$fontColor : #282A2A ;  // 主题字体颜色
+$mainColor : #0077FF;   // 主题蓝色
+$white : #fff;          // 白色
+$red : #F23030;         // 强调。警告。出错
+$green :  #33BE85;      // 完成
+$orange : #FF6600 ;     // 评价，补贴，积分
+$skyblue : #31BDBD ;    //  品类，票据，房地产
+$yellow : #FFB800 ;     // 押金，提示
+$gray: #999999;         // 3.3登入变灰色
+$noEnter: #B2D6FF;      // 3.3未输入
+//定位全屏
+@mixin allcover{
+	position:absolute;
+	top:0;
+	left: 0;
+	right:0;
+	bottom: 0;
+}
+//定位滚动全屏
+@mixin allcoverfixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+//定位上下左右居中
+@mixin center {
+	position: absolute;
+	top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+//定位上下居中
+@mixin ct {
+	position: absolute;
+	top: 50%;
+  transform: translateY(-50%);
+}
+
+//定位左右居中
+@mixin cl {
+	position: absolute;
+	left: 50%;
+  transform: translateX(-50%);
+}
+
+//宽高
+@mixin wh($width, $height){
+	width: $width;
+	height: $height;
+}
+
+//字体大小、行高、字体
+@mixin font($size, $line-height, $family: 'Microsoft YaHei') {
+	font: #{$size}/#{$line-height} $family;
+}
+
+//字体大小，颜色
+@mixin sc($size, $color){
+	font-size: $size;
+	color: $color;
+}
+
+//flex 布局和 子元素 对其方式
+@mixin fj($type: space-between){
+	display: flex;
+	justify-content: $type;
+}
+// 1px边框处理
+@mixin bb-1px( $color ){
+  position: relative;
+  &:after{
+    content: " ";
+    pointer-events: none; /* 防止点击触发 */
+    position: absolute;
+    bottom : 0;
+    left : 0;
+    width: 100%;
+    box-sizing: border-box;
+    border-top: 1px solid $color;
+  }
+}
+@mixin bt-1px( $color ){
+  position: relative;
+  &:before{
+    content: " ";
+    pointer-events: none; /* 防止点击触发 */
+    position: absolute;
+    top : 0;
+    left : 0;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid $color;
+  }
+}
+@mixin bl-1px( $color ){
+  position: relative;
+  &:before{
+    content: " ";
+    pointer-events: none; /* 防止点击触发 */
+    position: absolute;
+    top : 0;
+    left : 0;
+    height: 100%;
+    box-sizing: border-box;
+    border-left: 1px solid $color;
+  }
+}
+@mixin br-1px( $color ){
+  position: relative;
+  &:after{
+    content: " ";
+    pointer-events: none; /* 防止点击触发 */
+    position: absolute;
+    top : 0;
+    right: 0;
+    height: 100%;
+    box-sizing: border-box;
+    border-right: 1px solid $color;
+  }
+}
+@mixin bd-1px( $color ){
+  position: relative;
+  &:before{
+    content: " ";
+    pointer-events: none; /* 防止点击触发 */
+    position: absolute;
+    top : 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    border: 1px solid $color;
+  }
+}
+
+@mixin bg-image( $url ){
+  background-image: url( $url + "@2x.png" ) ;
+	background-repeat: no-repeat;
+  background-position: center center;
+	background-size: 100% 100%;
+  @media ( -webkit-min-device-pixel-ratio : 3 ),( min-device-pixel-ratio : 3 ){
+    background-image: url( $url + "@3x.png" ) ;
+    background-position: center center;
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+  }
+}
+
+@mixin bd-none {
+	&:before,&:after {
+		display: none;
+	}
+}
+// 一行文字
+@mixin one-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// 多行文字显示省略
+@mixin ellipsis($num:2) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: $num;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+// 弹性盒
+

@@ -1,0 +1,315 @@
+body, div, span, header, footer, nav, section, aside, article, ul, dl, dt, dd, li, a, p, h1, h2, h3, h4,h5, h6, i, b, textarea, button, input, select, figure, figcaption {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+    border: none;
+    font-style: normal;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color:transparent;
+    -webkit-font-smoothing: antialiased;
+}
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar
+{
+    width: 0;
+    height: 0;
+    background-color: #F5F5F5;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0);
+    border-radius: 0.1rem;
+    background-color: #F5F5F5;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb
+{
+    border-radius: 0.1rem;
+    -webkit-box-shadow: inset 0 0 0.06rem rgba(0,0,0,.3);
+    background-color: #555;
+}
+
+/*定义placeholder */
+::-webkit-input-placeholder
+{
+  color: #ccc;
+}
+input , textarea{
+  background: transparent;
+  -webkit-appearance: none;
+  background-color: transparent;
+  &:focus {
+    outline: none;
+  }
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+textarea{
+  resize: none;
+}
+
+html,body{
+  position: relative;
+  min-width: 300px;
+  height: 100%;
+  font: normal normal 0.28rem/1.15 helvetica ;
+  color: #282a2a;
+  // background-color: #f0f0f0;
+  background-color: #f8f8f8;
+}
+body.noscroll{
+  overflow: hidden;
+}
+// 解决uc浏览器底部多出一整屏高度的问题
+#app , .APP{
+  width: 100%;
+  height: 100%;
+}
+
+a {
+  color: #333;
+}
+// 左右间距
+.gutter {
+  padding: 0 0.24rem;
+}
+sup , sub{
+  font-size: 0.14rem;
+}
+img {
+  border:none;
+  display: block;
+  width: 100%;
+}
+a{
+  color:#333;
+}
+
+.clear:after, .clear:before{
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.clear{
+  zoom:1;
+}
+
+.back_img{
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.margin{
+  margin: 0 auto;
+}
+
+.left{
+  float: left;
+}
+
+.right{
+  float: right;
+}
+
+.hide{
+  display: none !important;
+}
+
+.show{
+  display: block !important;
+}
+
+.vt {
+  vertical-align: top;
+}
+
+.ct {
+  text-align: center;
+}
+.lt {
+  text-align: left;
+}
+.rt {
+  text-align: right;
+}
+.bold{
+  font-weight: bold;
+}
+// 一行文字
+.ellipsis{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+// 两行文字
+.doubleellipsis {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+
+// 控制未编译的表达式不显示
+[v-cloak] {
+  display: none;
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5){
+  .border-1px {
+    &::after {
+      -webkit-transform: scaleY(0.7);
+      transform: scaleY(0.7);
+    }
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2){
+  .border-1px{
+    &::after{
+      -webkit-transform: scaleY(0.5);
+      transform: scaleY(0.5);
+    }
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3){
+  .border-1px{
+    &::after{
+      -webkit-transform: scaleY(0.34);
+      transform: scaleY(0.34);
+    }
+  }
+}
+
+// toast 样式重置
+.weui-toast__content {
+  font-size: 0.32rem;
+  color: #fff;
+}
+.weui-toast_success .weui-icon_toast:before{
+  font-size: 1rem;
+}
+.weui-icon-success-no-circle .weui-icon_toast:before {
+  font-size: 1rem;
+}
+// loading 样式
+.vux-loading .weui-toast {
+  top: 50%;
+  width: 25%;
+  min-height: 0 !important;
+  transform: translate(-50%,-50%);
+}
+// loadMore 样式
+.weui-loadmore {
+  width: 65%;
+  margin: 0.2rem auto !important;
+  line-height: 0.16rem !important;
+  text-align: center;
+}
+.weui-loadmore_line {
+  border: 0 none;
+}
+.weui-loadmore__tips {
+  font-size: 0.2rem !important;
+}
+.weui-icon_toast.weui-loading{
+  margin: 0.3rem 0 0 !important;
+  width: 0.8rem!important;
+  height: 0.8rem!important;
+}
+.weui-loadmore_line {
+  border-top: 0 none !important;
+}
+.weui-loadmore_line .weui-loadmore__tips {
+  top : 0 !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+}
+
+// 开关样式统一
+.vux-x-switch.weui-cell_switch{
+  display: inline-block;
+  padding: 0 !important;
+  width: 1rem !important;
+  height: 0.6rem!important;
+}
+.weui-switch{
+  width: 1rem !important;
+  height: 0.6rem!important;
+  border-radius: 0.3rem !important;
+}
+.weui-switch:before, .weui-switch-cp__box:before{
+  width: 0.94rem !important;
+  height: 0.54rem !important;
+  border-radius: 0.29rem!important;
+}
+.weui-switch:after, .weui-switch-cp__box:after{
+  width: 0.54rem !important;
+  height: 0.54rem !important;
+  border-radius: 50%!important;
+}
+.weui-switch:checked:after{
+  transform: translateX(0.4rem)!important;
+}
+.weui-cell:before{
+  height: 0!important;
+  border-top: 0 none!important;
+}
+
+
+// check-icon样式重置
+.weui-icon-success{
+  color: #0077FF !important;
+}
+.weui-icon-success:before{
+  margin: 0 !important;
+}
+.weui_icon_circle:before{
+  margin: 0 !important;
+}
+.vux-check-icon > .weui-icon-success:before, .vux-check-icon > .weui-icon-success-circle:before{
+  color: #0077FF !important;
+}
+
+// confirm样式重置
+.weui-dialog{
+  max-width: none !important;
+  border-radius: 0.2rem !important;
+  overflow: visible !important;
+}
+.weui-dialog__title{
+  font-size: 0.32rem !important;
+}
+.weui-dialog__bd{
+  font-size: 0.3rem!important;
+}
+.weui-dialog__ft{
+  font-size: 0.3rem !important;
+  line-height: 0.8rem !important;
+}
+
+// submit-btn样式重置
+.weui-btn .weui-loading{
+  width: 0.3rem !important;
+  height: 0.3rem !important;
+}
+.weui-btn_loading .weui-loading{
+  margin: 0 !important;
+}
+// 进度条样式重置
+.weui-progress__bar{
+  height: 0.32rem !important;
+  border-radius: 0.16rem!important;
+  overflow: hidden!important;
+}
+.weui-progress__inner-bar{
+  border-radius: 0.16rem!important;
+  background-color: #0077ff !important;
+}
