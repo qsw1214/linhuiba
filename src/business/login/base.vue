@@ -50,6 +50,8 @@
   import { postLogin ,wechatLogin , getCurrentCity } from 'src/service/getData' ;
   import { mapState, mapMutations } from 'vuex';
   import { APPID_LOGIN } from 'src/config/data' ;
+  import { jsBridge } from 'src/config/jsBridge';
+
   export default {
     data () {
       return {
@@ -79,44 +81,47 @@
         }
       },
       login (account , password){
-        if ( !COMPANY_REG.test(account) ){
-            // 手机号输入不对
-          this.$vux.toast.text('请输入11位有效手机号或者账号', 'middle') ;
-          return ;
-        }
-        if ( !PASSWORD_REG.test(password) ){
-          // 密码包含其他字符
-          this.$vux.toast.text('请检查您输入的密码是否为6-30数字和字母', 'middle');
-          return ;
-        }
-        postLogin( { account , password } )
-        .then( res => {
-          this.RECORD_USERINFO( res.result );
-          if(!res.result.mobile) {
-            // 跳转到绑定手机号页面
-            this.$router.push({ path : '/bindMobile' , query : {redirect : this.$route.query.redirect } });
-          }else{
-            this.$vux.toast.show({
-              text : '登录成功',
-              type : 'success',
-              width : '25%'
-            });
-            let redirect = this.$route.query.redirect ;
-            if(redirect) {
-              let temp = window.location.origin + '/#' + redirect ;
-              window.location.href = temp ;
-              // this.$router.replace( redirect ); 会存在跳转失败的情况
-            }else {
-              // 避免授权的bug;
-              let temp2 = window.location.origin + '/#/home' ;
-              window.location.href = temp2 ;
-              // this.$router.replace({ path : '/home' });
-            }
-          }
-        })
-        .catch( err => {
-          this.$vux.toast.text(err.msg);
-        })
+        jsBridge.callHandler('getOS', {}, () => {
+        });
+        jsBridge.registerHandler()
+//        if ( !COMPANY_REG.test(account) ){
+//            // 手机号输入不对
+//          this.$vux.toast.text('请输入11位有效手机号或者账号', 'middle') ;
+//          return ;
+//        }
+//        if ( !PASSWORD_REG.test(password) ){
+//          // 密码包含其他字符
+//          this.$vux.toast.text('请检查您输入的密码是否为6-30数字和字母', 'middle');
+//          return ;
+//        }
+//        postLogin( { account , password } )
+//        .then( res => {
+//          this.RECORD_USERINFO( res.result );
+//          if(!res.result.mobile) {
+//            // 跳转到绑定手机号页面
+//            this.$router.push({ path : '/bindMobile' , query : {redirect : this.$route.query.redirect } });
+//          }else{
+//            this.$vux.toast.show({
+//              text : '登录成功',
+//              type : 'success',
+//              width : '25%'
+//            });
+//            let redirect = this.$route.query.redirect ;
+//            if(redirect) {
+//              let temp = window.location.origin + '/#' + redirect ;
+//              window.location.href = temp ;
+//              // this.$router.replace( redirect ); 会存在跳转失败的情况
+//            }else {
+//              // 避免授权的bug;
+//              let temp2 = window.location.origin + '/#/home' ;
+//              window.location.href = temp2 ;
+//              // this.$router.replace({ path : '/home' });
+//            }
+//          }
+//        })
+//        .catch( err => {
+//          this.$vux.toast.text(err.msg);
+//        })
       },
       wxLogin () {
         let appId = APPID_LOGIN() ;
